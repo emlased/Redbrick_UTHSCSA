@@ -3,8 +3,16 @@
 ## Project Admin
 [Here](https://www.youtube.com/watch?v=J0Wf1Kvhfv0&list=PLjI4V6WYNAySdSCPx0oI1pMo9hhrr7OA5) is a short youtube playlist showing the process of setting up a project in RedBrick.
 
-1. Select the Taxonomies section on the left main toolbar. This will allow you to define label names and types as well as organize labels into directories. Different labels include segmentations, distance measurements, angle measurements, bounding boxes, and more. [Here](https://docs.redbrickai.com/projects/taxonomies) is a detailed description of available taxonomies. For lung nodule segmentation, the label type is a segmentation and the label name could be Lung_nodule. A Classification is a label that can be assigned to a study or series. For example, if labelers are expected to assess the quality of a study, a boolean label can be associated with the study so that the labeler will give a T/F rating for the label titled Adequate Study. 
+### Linking Data
+When adding data, it needs to be housed externally if privacy is a concern. Uploaded data will be stored on RedBrick servers. Complete the following steps to set up external storage. [Here](https://docs.redbrickai.com/importing-data/import-cloud-data) is documentation regarding cloud storage. 
+1. 
 
+### Project Setup
+1. Select the Taxonomies section on the left main toolbar. This will allow you to define label names and types as well as organize labels into directories. Different labels include segmentations, distance measurements, angle measurements, bounding boxes, and more. [Here](https://docs.redbrickai.com/projects/taxonomies) is a detailed description of available taxonomies. For lung nodule segmentation, the label type is a segmentation and the label name could be Lung_nodule.
+1. In the Home page, select New Project in the top right corner. Select an appropriate taxonomy.
+1. When designing a pipeline, you can add multiple review stages and define what fraction of labels must pass through each stage. For lung nodule segmentation, a simple pipeline where 100% of labels are reviewed a single time is recommended.
+1. 
+ 
 ## For Labelers
 [Here](https://www.youtube.com/watch?v=cl7oTHeIhsc&list=PLjI4V6WYNAyS9PGIYVabokPNri_wLeYAQ) is a short youtube playlist showing the annotation process for labelers.
 
