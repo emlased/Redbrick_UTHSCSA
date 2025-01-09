@@ -27,6 +27,8 @@ A taxonomy is the backbone of your labeling project. It defines the labels and a
 - Navigate to the **Taxonomies** tab.
 - Select **New Taxonomy** and define labels, attributes, and hints. For example, create a “Lung Tumor” label with a boolean attribute for “Cavitation Present” and include helpful instructions under **Hint**.
 
+![Taxonomy](images/Taxonomy.png)
+
 ---
 
 ### Creating a Project
@@ -88,6 +90,8 @@ Define team roles and assign tasks to streamline the labeling and review process
 - **Workflow:** Single labeling with one review stage for quality checks.
 - **Setup:** Add one review stage during project creation.
 
+![Rapid](images/Rapid.png)
+
 ### The Wolf Pack
 - **Use Case:** Teams with varying experience levels.
 - **Workflow:**
@@ -96,13 +100,17 @@ Define team roles and assign tasks to streamline the labeling and review process
   - Final review by team leads or experts.
 - **Setup:** Add two review stages.
 
+![Tiered](images/Tiered.png)
+
 ### Difficult Cases
 - **Use Case:** Expert annotators creating highest quality labels from complex datasets with well defined criteria for labels.
 - **Workflow:**
   - Expert annotators create multiple labels for each study.
   - Similarity scores are calculated for each label.
   - The best or consensus label is chosen manually, taking into account similarity scores.
-- **Setup:** Select multiple labeling when creating a project. Toggle to single output and manual merge. Select the number of labelers you would like to annotate each study. 
+- **Setup:** Select multiple labeling when creating a project. Toggle to single output and manual merge. Select the number of labelers you would like to annotate each study.
+
+![Consensus](images/Consensus.png)
 
 ### Orientation
 - **Use Case:** Training and skill assessment for new annotators.
