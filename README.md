@@ -116,7 +116,8 @@ Define team roles and assign tasks to streamline the labeling and review process
 - **Use Case:** Training and skill assessment for new annotators.
 - **Workflow:**
   - Create a set of ground truth annotations
-  - 
+  - Annotators create segmentations.
+  - Similarity score calculated using ground truth. 
 
 ---
 
@@ -133,11 +134,16 @@ Define team roles and assign tasks to streamline the labeling and review process
 1. **Viewer Configuration:** Organize views (e.g., axial, coronal, sagittal) and adjust image contrast using the **Windowing Tool**.
 2. **Select a Label:** Use the **Taxonomy** toolbar or numeric shortcuts.
 3. **Segmentation Tools:**
+   -  The standard segmentation tools are described in the short tutorial of the segmentation toolkit below.
    - **F.A.S.T. Tool:** Automatically generates 2D segmentations.
    - **Mask Propagation Tool:** Creates 3D segmentations from 2D slices.
-4. **Study/Series Classification:** Answer questions about study quality.
-5. **Final Steps:** Submit completed labels or flag issues using **Raise Issue** in the **Skip** menu.
-6. **Communication:** Check the **Comment** tab for reviewer feedback.
+5. **Study/Series Classification:** Answer questions about study quality.
+6. **Final Steps:** Submit completed labels or flag issues using **Raise Issue** in the **Skip** menu.
+7. **Communication:** Check the **Comment** tab for reviewer feedback.
+
+Watch [**Overview of the Labeling Process Video**](https://www.youtube.com/watch?v=cl7oTHeIhsc&list=PLjI4V6WYNAyS9PGIYVabokPNri_wLeYAQ)
+
+Watch [**Segmentation Toolkit Overview**](https://www.youtube.com/watch?v=wsDFtPv64IM&list=PLjI4V6WYNAyTuh9PWDKF_N8k2lEdD47qz)
 
 ---
 
