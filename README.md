@@ -21,6 +21,16 @@ Finally, the following sections are recommended after setting up a project.
 
 ## Data Import
 
+### Data Upload
+
+### Cloud Storage
+
+### Uploading Labels
+There are cases where you may want to load a set of labels into RedBrick. 
+- Adding model generated pre-labels to decrease labeler workload.
+- Adding model pre-labels to serve as benchmark for a clinical validation study.
+- Adding ground truth labels for part of the dataset to assist with labeler training and assessment.
+
 ## Labeling Taxonomy
 Taxonomies help organize how you label data in RedBrick AI, ensuring consistency across projects. When setting up a taxonomy, you'll define:
 - **Types of Labels**: Examples include Segmentation or Bounding Boxes.
@@ -174,5 +184,7 @@ Watch [**Segmentation Toolkit Overview**](https://www.youtube.com/watch?v=wsDFtP
 7. **Communication:** Check the **Comment** tab for reviewer feedback.
 
 ### Data Export
+
+To export data in redbrick, use
 
 ---
