@@ -11,11 +11,13 @@ When creating a new project on RedBrick, a team must designate a lead who will b
 4. **Project Workflow**: Define process for labeling and quality assurance.
 5. **Labeling Quickstart**: Describes the project workflow for common use cases.
 
-Finally, the following sections are recommended prior to starting labeling.
+Finally, the following sections are recommended after setting up a project.
 1. **Segmentation Guide**: Overview of labeling tools.
 2. **Data Export**: How to access data.
 
 ---
+
+## Data Import
 
 ## Labeling Taxonomy
 Taxonomies help organize how you label data in RedBrick AI, ensuring consistency across projects. When setting up a taxonomy, you'll define:
@@ -36,6 +38,7 @@ To create a taxonomy:
 
 ## Team Roles and Responsibilities
 The core team includes:
+- **Team Lead**: Serves as Internal Reviewer, but this member has Organizational Admin status so that they can set up new projects.
 - **Internal Reviewers**: Serve as Project Admins, manage labeling stages, and conduct quality reviews.
 - **Labelers**: Perform data annotation as directed by Internal Reviewers.
 
@@ -51,7 +54,7 @@ Additional roles may include:
 To add team members:
 1. Navigate to the **Team** tab.
 2. Select **Invite member**.
-3. Assign appropriate roles (Project Member, Admin, etc.).
+3. Assign appropriate roles. Labelers and External Reviewers are Project Members. Internal Reviewers and External Managers are Project Admin. 
 
 ---
 
@@ -62,6 +65,10 @@ RedBrick workflows can be customized based on team needs. To set up a project wo
 - An optional stage for evaluating data before labeling.
 - In this stage, the reviewer can remove studies that are poor quality from the labeling pool.
 - As with all review stages, the entire dataset can be reviewed or a fractional review can be performed.
+
+### Auto-annotator
+- This stage can be included to use a model to automatically segment normal anatomy.
+- If the team has a custom model, this model can be uploaded and applied to data.
 
 ### Single Labeling
 - Studies are labeled once by each annotator.
@@ -82,44 +89,88 @@ Below is an example of the project setup page. Note that the Brain Brats taxonom
 
 ---
 
+## Recommended Labeling Workflows
+
+This section outlines workflows tailored to various team sizes and project types. 
+
+- **Rapid Labeling**: Best for small teams or rapid prototyping. It offers a quick and flexible option for smaller projects.  
+- **Test Batch**: Ideal for large teams or gold-standard labeling, introducing a practice stage to refine instructions and train labelers.  
+- **Tiered Labeling**: Recommended for segmentation tasks, utilizing multiple review stages to ensure high-quality labels.  
+- **Consensus Labeling**: Effective for less time-intensive tasks (e.g., bounding boxes or landmarks), enhancing dataset quality through multiple annotators and comparison.
+
+[Flowchart]
+
+---
+
+### Rapid Labeling  
+Designed for solo or small teams aiming to quickly label datasets. This method uses single labeling and optional internal or external review for quality assurance.  
+
+**Steps**:  
+1. Add team members.  
+2. Define the labeling taxonomy.  
+3. Create a project.  
+4. Set up a single-labeling workflow, adding internal/external reviews if needed.  
+
+---
+
+### Test Batch  
+Used to train large teams and establish gold-standard instructions. Labelers complete an initial set of 10 studies each, with consensus-based quality checks.  
+
+**Steps**:  
+1. Add team members and define the labeling taxonomy.  
+2. Create a project and enable multiple labeling with a manual single output.  
+3. Set the minimum number of labelers to 2.  
+4. Assign a dataset of 5x the number of labelers (e.g., 10 studies per labeler).  
+5. After labeling, calculate similarity scores to identify inconsistencies and refine instructions.
+
+---
+
+### Tiered Labeling  
+Optimized for segmentation tasks, where each study undergoes multiple review stages to ensure accuracy.  
+
+**Steps**:  
+1. Use the predefined taxonomy to create a project.  
+2. Configure 2 review stages: internal (by experienced team members) and external (by a faculty reviewer).  
+3. Assign labelers to the labeling stage and reviewers to respective review stages.  
+4. Labels pass through internal review for corrections or feedback, followed by external review for final approval.  
+5. Export finalized labels as ground truth.  
+
+---
+
+### Consensus Labeling  
+Suitable for tasks like bounding boxes or landmarks, this approach uses multiple annotators to improve accuracy.  
+
+**Steps**:  
+1. Use the predefined taxonomy to create a project.  
+2. Select a consensus approach with multiple labels, single output, and manual review. Set a minimum of 2 labelers.  
+3. Add a review stage titled “external review.”  
+4. An experienced labeler conducts a manual review, selecting the best label and making necessary edits.  
+5. Use similarity scores to identify challenging cases.  
+6. Finalized labels undergo external review and are exported as ground truth.  
+
+---
+
+### Clinical Validation Testing  
+For clinical validation, follow the gold-standard workflow, with model-generated labels included in the dataset. Labelers remain blinded to model labels. As labeling progresses, similarity scores compare model-generated and gold-standard labels to evaluate performance.  
+
 ## Completing a Project
 
 ### Segmentation Guide
 
+Watch [**Overview of the Labeling Process Video**](https://www.youtube.com/watch?v=cl7oTHeIhsc&list=PLjI4V6WYNAyS9PGIYVabokPNri_wLeYAQ)
+
+Watch [**Segmentation Toolkit Overview**](https://www.youtube.com/watch?v=wsDFtPv64IM&list=PLjI4V6WYNAyTuh9PWDKF_N8k2lEdD47qz)
+
+1. **Viewer Configuration:** Organize views (e.g., axial, coronal, sagittal) and adjust image contrast using the **Windowing Tool**.
+2. **Select a Label:** Use the **Taxonomy** toolbar or numeric shortcuts.
+3. **Segmentation Tools:**
+   -  The standard segmentation tools are described in the short tutorial of the segmentation toolkit below.
+   - **F.A.S.T. Tool:** Automatically generates 2D segmentations.
+   - **Mask Propagation Tool:** Creates 3D segmentations from 2D slices.
+5. **Study/Series Classification:** Answer questions about study quality.
+6. **Final Steps:** Submit completed labels or flag issues using **Raise Issue** in the **Skip** menu.
+7. **Communication:** Check the **Comment** tab for reviewer feedback.
+
 ### Data Export
 
 ---
-
-## Labeling Quickstart
-### Recommended Workflows
-1. **Rapid Labeling**: For small teams or quick prototypes.
-2. **Test Batch**: To refine instructions and establish a gold standard.
-3. **Tiered Labeling**: For time-intensive projects like segmentation.
-4. **Consensus Labeling**: For less intensive tasks like bounding boxes.
-
-#### Rapid Labeling
-1. Add team members.
-2. Define labeling taxonomy.
-3. Create a project.
-4. Use single labeling with optional review stages.
-
-#### Test Batch
-1. Add team members.
-2. Define labeling taxonomy.
-3. Create a project with multiple labeling.
-4. Assign 2 labelers per study and review similarity scores.
-
-#### Tiered Labeling
-1. Use a pre-defined taxonomy.
-2. Include internal and external review stages.
-3. Finalize and export labels after reviews.
-
-#### Consensus Labeling
-1. Use multiple labeling with single output and manual selection.
-2. Conduct manual reviews to ensure quality.
-
----
-
-## Other Cases
-### Clinical Validation Testing
-Use a similar workflow to gold standard labeling but blind labelers to model-generated labels. Compare **Similarity Scores** between the model and human labels.
