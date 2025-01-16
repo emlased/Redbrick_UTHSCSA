@@ -32,7 +32,7 @@ To create a taxonomy:
 2. Select **New Taxonomy**.
 3. Define labels, attributes, and hints.
 
-[Taxonomy example]
+![Taxonomy example](images/Taxonomy.png)
 
 ---
 
@@ -85,7 +85,7 @@ RedBrick workflows can be customized based on team needs. To set up a project wo
 - If there are associated faculty or other stakeholders, they can complete an external review to ensure they are satisfied with label quality.
 
 Below is an example of the project setup page. Note that the Brain Brats taxonomy is selected. Multiple labeling is also selected with single output manual merge with 2 annotators. 
-[Labeling example]
+![Labeling example](images/workflow.png)
 
 ---
 
@@ -98,7 +98,7 @@ This section outlines workflows tailored to various team sizes and project types
 - **Tiered Labeling**: Recommended for segmentation tasks, utilizing multiple review stages to ensure high-quality labels.  
 - **Consensus Labeling**: Effective for less time-intensive tasks (e.g., bounding boxes or landmarks), enhancing dataset quality through multiple annotators and comparison.
 
-[Flowchart]
+![Flowchart](images/flowchart.png)
 
 ---
 
