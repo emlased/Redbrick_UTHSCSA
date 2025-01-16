@@ -22,14 +22,18 @@ Finally, the following sections are recommended after setting up a project.
 ## Data Import
 
 ### Data Upload
+To perform a data upload, simply navigate to the data tab of your project and drag and drop the relevant files into the project. 
 
 ### Cloud Storage
+Most projects in RedBrick will use a UT Health dataset stored in an Azure bucket. To access these files, teams will need to submit a request so that a JSON file can be generated containing a path to the data assigned to the team.
 
 ### Uploading Labels
 There are cases where you may want to load a set of labels into RedBrick. 
 - Adding model generated pre-labels to decrease labeler workload.
 - Adding model pre-labels to serve as benchmark for a clinical validation study.
 - Adding ground truth labels for part of the dataset to assist with labeler training and assessment.
+
+Labels must be uploaded alongside the studies using the command line interface.
 
 ## Labeling Taxonomy
 Taxonomies help organize how you label data in RedBrick AI, ensuring consistency across projects. When setting up a taxonomy, you'll define:
@@ -185,6 +189,6 @@ Watch [**Segmentation Toolkit Overview**](https://www.youtube.com/watch?v=wsDFtP
 
 ### Data Export
 
-To export data in redbrick, use
+To export data in redbrick, you will use the command line interface. 
 
 ---
