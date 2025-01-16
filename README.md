@@ -3,13 +3,15 @@ This guide outlines the key steps for setting up a new project on the RedBrick p
 
 ---
 
-## Creating a Project
+## Overview
 When creating a new project on RedBrick, a team must designate a lead who will be given admin access to create and set up a project. The following should be defined when starting a project:
 1. **Data Import**: Prepare data for labeling.
 2. **Labeling Taxonomy**: Create a clear schema of labels and attributes to help improve the quality of labeled data.
 3. **Team Roles and Responsibilities**: Define roles and permissions of the labeling team.
 4. **Project Workflow**: Define process for labeling and quality assurance.
 5. **Labeling Quickstart**: Describes the project workflow for common use cases.
+
+Watch [**Overview of Project Admin Video**](https://www.youtube.com/watch?v=J0Wf1Kvhfv0&list=PLjI4V6WYNAySdSCPx0oI1pMo9hhrr7OA5)
 
 Finally, the following sections are recommended after setting up a project.
 1. **Segmentation Guide**: Overview of labeling tools.
