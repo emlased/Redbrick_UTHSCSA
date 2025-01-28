@@ -1,60 +1,23 @@
 # Introduction
-This guide outlines the key steps for setting up a new project on the RedBrick platform and includes a quick walkthrough to help teams get started.
+
+This guide outlines the steps involved in setting up a new labeling project on the RedBrick platform.
 
 ---
 
-## Overview
-When creating a new project on RedBrick, a team must designate a lead who will be given admin access to create and set up a project. The following should be defined when starting a project:
-1. **Data Import**: Prepare data for labeling.
-2. **Labeling Taxonomy**: Create a clear schema of labels and attributes to help improve the quality of labeled data.
-3. **Team Roles and Responsibilities**: Define roles and permissions of the labeling team.
-4. **Project Workflow**: Define process for labeling and quality assurance.
-5. **Labeling Quickstart**: Describes the project workflow for common use cases.
-
-Watch [**Overview of Project Admin Video**](https://www.youtube.com/watch?v=J0Wf1Kvhfv0&list=PLjI4V6WYNAySdSCPx0oI1pMo9hhrr7OA5)
-
-Finally, the following sections are recommended after setting up a project.
-1. **Segmentation Guide**: Overview of labeling tools.
-2. **Data Export**: How to access data.
-
----
-
-## Data Import
-
-### Data Upload
-To perform a data upload, simply navigate to the data tab of your project and drag and drop the relevant files into the project. 
-
-### Cloud Storage
-Most projects in RedBrick will use a UT Health dataset stored in an Azure bucket. To access these files, teams will need to submit a request so that a JSON file can be generated containing a path to the data assigned to the team.
-
-### Uploading Labels
-There are cases where you may want to load a set of labels into RedBrick. 
-- Adding model generated pre-labels to decrease labeler workload.
-- Adding model pre-labels to serve as benchmark for a clinical validation study.
-- Adding ground truth labels for part of the dataset to assist with labeler training and assessment.
-
-Labels must be uploaded alongside the studies using the command line interface.
-
-## Labeling Taxonomy
-Taxonomies help organize how you label data in RedBrick AI, ensuring consistency across projects. When setting up a taxonomy, you'll define:
-- **Types of Labels**: Examples include Segmentation or Bounding Boxes.
-- **Label Names**: Such as "Edema."
-- **Attributes**: Add extra details using checkboxes (True/False), dropdown options, multiple choices, or text fields.
-- **Classifications**: Attributes added to studies, series, or video frames to provide more information.
-- **Hints**: Instructions visible when hovering over labels.
-
-To create a taxonomy:
-1. Navigate to the **Taxonomies** tab.
-2. Select **New Taxonomy**.
-3. Define labels, attributes, and hints.
-
-![Taxonomy example](images/Taxonomy.png)
+## Table of Contents
+1. [Team Roles and Responsibilities](#team-roles-and-responsibilities)
+2. [Labeling Taxonomy](#labeling-taxonomy)
+3. [Creating a Project](#creating-a-project)
+4. [Importing Data](#importing-data)
+5. [Segmentation Workflow](#segmentation-workflow)
+6. [Exporting Data](#exporting-data)
 
 ---
 
 ## Team Roles and Responsibilities
+
 The core team includes:
-- **Team Lead**: Serves as Internal Reviewer, but this member has Organizational Admin status so that they can set up new projects.
+- **Team Lead**: Serves as Internal Reviewer, but this member has Organizational Admin status to set up new projects.
 - **Internal Reviewers**: Serve as Project Admins, manage labeling stages, and conduct quality reviews.
 - **Labelers**: Perform data annotation as directed by Internal Reviewers.
 
@@ -67,128 +30,145 @@ Additional roles may include:
 - **Internal Reviewers**: Residents.
 - **External Reviewers/Managers**: Faculty or industry clients.
 
-To add team members:
-1. Navigate to the **Team** tab.
-2. Select **Invite member**.
-3. Assign appropriate roles. Labelers and External Reviewers are Project Members. Internal Reviewers and External Managers are Project Admin. 
+> **To add team members:**
+> 1. Navigate to the **Team** tab.
+> 2. Select **Invite Member**.
+> 3. Assign appropriate roles:
+>    - **Project Members**: Labelers and External Reviewers.
+>    - **Project Admins**: Internal Reviewers and External Managers.
 
 ---
 
-## Project Workflow
-RedBrick workflows can be customized based on team needs. To set up a project workflow, first press the **+** symbol next to the **Home** section on the left sided toolbar. This will give you the option to create a new project. After **create project** is selected, you will be prompted to define the project specifications and workflow. After **create project** is selected, you will be prompted to define the project specifications and workflow. 
+## Labeling Taxonomy
 
-### Pre-Review
-- An optional stage for evaluating data before labeling.
-- In this stage, the reviewer can remove studies that are poor quality from the labeling pool.
-- As with all review stages, the entire dataset can be reviewed or a fractional review can be performed.
+Taxonomies define the labeling schema in RedBrick AI, ensuring consistency across projects. When setting up a taxonomy, you'll define:
+- **Types of Labels**: Examples include Segmentation or Bounding Boxes.
+- **Label Names**: Such as "Edema."
+- **Attributes**: Add extra details using checkboxes (True/False), dropdown options, multiple choices, or text fields.
+- **Classifications**: Attributes added to studies, series, or video frames to provide more information.
+- **Hints**: Instructions visible when hovering over labels.
 
-### Auto-annotator
-- This stage can be included to use a model to automatically segment normal anatomy.
-- If the team has a custom model, this model can be uploaded and applied to data.
+The following are examples of when you might add an attribute to a label.
+- brain mass segmentation > suspected intra-axial vs extra-axial location
+- liver segmentation > mass present vs absent
+- lung nodule segmentation > clear vs indeterminate margins
+- study classification > adequate vs poor quality
 
-### Single Labeling
-- Studies are labeled once by each annotator.
+> **To create a taxonomy:**
+> 1. Navigate to the **Taxonomies** tab.
+> 2. Select **New Taxonomy**.
+> 3. Define labels, attributes, and hints.
 
-### Multiple Labeling
-- Studies receive several labels, and **Similarity Scores** identify discrepancies for review.
-- Single output labeling uses a manual or automated data merge stage to select the best labels.
-- Multiple output labeling includes all labels in the final dataset.
+---
 
-### Review Stage
-- Labels are validated post-labeling.
-- Any number of review stages can be added in series and reviews can be complete or fractional.
-- It is recommended that a labeling team perform an internal review prior to finalizing labels.
-- If there are associated faculty or other stakeholders, they can complete an external review to ensure they are satisfied with label quality.
+## Creating a Project
 
-Below is an example of the project setup page. Note that the Brain Brats taxonomy is selected. Multiple labeling is also selected with single output manual merge with 2 annotators. 
-![Labeling example](images/workflow.png)
+### Workflow Stages
+- **Pre-Review**: Optional stage for evaluating data before labeling.
+  - The reviewer can remove studies of poor quality from the labeling pool.
+- **Single Labeling**: Studies are labeled once by each annotator.
+- **Multiple Labeling**: Studies receive several labels, and **Similarity Scores** identify discrepancies for review.
+  - **Single Output Labeling**: Manual or automated data merge stage to select the best labels.
+  - **Multiple Output Labeling**: Includes all labels in the final dataset.
+- **Review Stage**: Labels are validated post-labeling.
+  - Any number of review stages can be added in series (complete or fractional).
+  - Internal reviews are recommended prior to finalizing labels.
+
+> **To create a project:**
+> 1. Press the **+** symbol next to the **Home** tab.
+> 2. Select **New Project**.
+> 3. Name the project and select the appropriate taxonomy.
+> 4. Add stages as needed. For basic projects, press **+ Add Review Stage**.
+
+---
+
+## Importing Data
+
+There are several options for importing data into RedBrick. For projects importing data from the UTSA AI consortium or uploading prelabeled data, an **Items List** (.json file) must be generated and uploaded using the RedBRick CLI (command line interface).
+
+### Adding a Storage Method
+
+RedBrick supports multiple cloud storage integrations.
+
+> **To add a storage method:**
+> - Follow the steps in the RedBrick documentation.
+
+### Creating an Items List
+
+The **Items List** is a `.json` file that contains:
+- A path to each item being imported.
+- Metadata to organize items into tasks.
+
+**Example Path**:  
+`container/folder/item.dcm`
+
+> **To create an Items List:**
+> 1. In the **Integrations** tab, click **…** for your storage method and select **Verify Storage Method**.
+> 2. Use a script to generate the `items.json` file for your data.
+
+#### Importing Annotations
+To include annotations, specify:
+- A path to each segmentation file.
+- A segment map associating segments with taxonomy items.
+
+Segmentation files must be in **nifti** format.
+
+[See Examples of Item Lists](https://docs.redbrickai.com/importing-data/import-cloud-data/creating-an-items-list)
+
+### Adding Data to a Project
+
+To import studies use the **RedBrick CLI**:
+1. Install CLI.
+2. Create a local project directory.
+3. Upload the `items.json` file.
+
+> **To Add Data Using the CLI**:
+> 1. Create a virtual environment and install redbrick SDK/CLI.
+> ```bash
+> python -m venv venv &&
+> source ./venv/bin/activate &&
+> pip install -U redbrick-sdk
+> ```
+> 2. Generate API key under **Integrations** tab.
+> 3. Copy OrgID from RedBrick Url. `https://app.redbrickai.com/<org_id>/projects/<project_id>`
+> 4. Add CLI credentials.
+> ```bash
+> redbrick config
+> ```
+> 6. Copy StorageID from the Storage Method in the **Integrations** tab.
+> 7. Upload items list. Use your own STORAGE ID.
+> ```bash
+> redbrick upload items.json --storage STORAGEID
+> ```
+
+---
+
+## Segmentation Workflow
+
+As studies move through the workflow:
+- **Team Lead**: Monitors progress and assigns tasks.
+- **Labelers and Reviewers**: Perform assigned labeling tasks.
+
+### Task Assignment
+- **Automated Assignment**: Default for labeling tasks.
+- **Manual Assignment**: For review stages, assign studies to specific users.
+
+### Segmentation Toolkit
+- [Overview of the Labeling Process (Video)](https://www.youtube.com/watch?v=cl7oTHeIhsc)
+- [Segmentation Toolkit Overview (Video)](https://www.youtube.com/watch?v=wsDFtPv64IM)
 
 ---
 
 ## Recommended Labeling Workflows
 
-This section outlines workflows tailored to various team sizes and project types. 
+Workflows tailored to team sizes and project types:
+- **Rapid Labeling**: Best for small teams or rapid prototyping.
+- **Test Batch**: Ideal for large teams or gold-standard labeling.
+- **Tiered Labeling**: Recommended for segmentation tasks, with multiple review stages.
+- **Consensus Labeling**: Effective for less time-intensive tasks (e.g., bounding boxes).
 
-- **Rapid Labeling**: Best for small teams or rapid prototyping. It offers a quick and flexible option for smaller projects.  
-- **Test Batch**: Ideal for large teams or gold-standard labeling, introducing a practice stage to refine instructions and train labelers.  
-- **Tiered Labeling**: Recommended for segmentation tasks, utilizing multiple review stages to ensure high-quality labels.  
-- **Consensus Labeling**: Effective for less time-intensive tasks (e.g., bounding boxes or landmarks), enhancing dataset quality through multiple annotators and comparison.
+---
 
 ![Flowchart](images/flowchart.png)
-
----
-
-### Rapid Labeling  
-Designed for solo or small teams aiming to quickly label datasets. This method uses single labeling and optional internal or external review for quality assurance.  
-
-**Steps**:  
-1. Add team members.  
-2. Define the labeling taxonomy.  
-3. Create a project.  
-4. Set up a single-labeling workflow, adding internal/external reviews if needed.  
-
----
-
-### Test Batch  
-Used to train large teams and establish gold-standard instructions. Labelers complete an initial set of 10 studies each, with consensus-based quality checks.  
-
-**Steps**:  
-1. Add team members and define the labeling taxonomy.  
-2. Create a project and enable multiple labeling with a manual single output.  
-3. Set the minimum number of labelers to 2.  
-4. Assign a dataset of 5x the number of labelers (e.g., 10 studies per labeler).  
-5. After labeling, calculate similarity scores to identify inconsistencies and refine instructions.
-
----
-
-### Tiered Labeling  
-Optimized for segmentation tasks, where each study undergoes multiple review stages to ensure accuracy.  
-
-**Steps**:  
-1. Use the predefined taxonomy to create a project.  
-2. Configure 2 review stages: internal (by experienced team members) and external (by a faculty reviewer).  
-3. Assign labelers to the labeling stage and reviewers to respective review stages.  
-4. Labels pass through internal review for corrections or feedback, followed by external review for final approval.  
-5. Export finalized labels as ground truth.  
-
----
-
-### Consensus Labeling  
-Suitable for tasks like bounding boxes or landmarks, this approach uses multiple annotators to improve accuracy.  
-
-**Steps**:  
-1. Use the predefined taxonomy to create a project.  
-2. Select a consensus approach with multiple labels, single output, and manual review. Set a minimum of 2 labelers.  
-3. Add a review stage titled “external review.”  
-4. An experienced labeler conducts a manual review, selecting the best label and making necessary edits.  
-5. Use similarity scores to identify challenging cases.  
-6. Finalized labels undergo external review and are exported as ground truth.  
-
----
-
-### Clinical Validation Testing  
-For clinical validation, follow the gold-standard workflow, with model-generated labels included in the dataset. Labelers remain blinded to model labels. As labeling progresses, similarity scores compare model-generated and gold-standard labels to evaluate performance.  
-
-## Completing a Project
-
-### Segmentation Guide
-
-Watch [**Overview of the Labeling Process Video**](https://www.youtube.com/watch?v=cl7oTHeIhsc&list=PLjI4V6WYNAyS9PGIYVabokPNri_wLeYAQ)
-
-Watch [**Segmentation Toolkit Overview**](https://www.youtube.com/watch?v=wsDFtPv64IM&list=PLjI4V6WYNAyTuh9PWDKF_N8k2lEdD47qz)
-
-1. **Viewer Configuration:** Organize views (e.g., axial, coronal, sagittal) and adjust image contrast using the **Windowing Tool**.
-2. **Select a Label:** Use the **Taxonomy** toolbar or numeric shortcuts.
-3. **Segmentation Tools:**
-   -  The standard segmentation tools are described in the short tutorial of the segmentation toolkit below.
-   - **F.A.S.T. Tool:** Automatically generates 2D segmentations.
-   - **Mask Propagation Tool:** Creates 3D segmentations from 2D slices.
-5. **Study/Series Classification:** Answer questions about study quality.
-6. **Final Steps:** Submit completed labels or flag issues using **Raise Issue** in the **Skip** menu.
-7. **Communication:** Check the **Comment** tab for reviewer feedback.
-
-### Data Export
-
-To export data in redbrick, you will use the command line interface. 
 
 ---
