@@ -32,7 +32,7 @@ Additional roles may include:
 - **Internal Reviewers**: Residents.
 - **External Reviewers/Managers**: Faculty or industry clients.
 
-> **To add team members:**
+> ### **To add team members:**
 > 1. Navigate to the **Team** tab.
 > 2. Select **Invite Member**.
 > 3. Assign appropriate roles:
@@ -56,7 +56,7 @@ The following are examples of how attributes/classifications might be used in a 
 - Lung nodule segmentation: Clear vs indeterminate margins.
 - Study classification: Adequate vs poor quality.
 
-> **To create a taxonomy:**
+> ### **To create a taxonomy:**
 > 1. Navigate to the **Taxonomies** tab.
 > 2. Select **New Taxonomy**.
 > 3. Define labels, attributes, and hints.
@@ -79,7 +79,7 @@ A RedBrick project workflow can be customized according to team needs. The appen
   - Any number of review stages can be added in series (complete or fractional).
   - Internal reviews are recommended prior to finalizing labels.
 
-> **To create a project:**
+> ### **To create a project:**
 > 1. Press the **+** symbol next to the **Home** tab.
 > 2. Select **New Project**.
 > 3. Name the project and select the appropriate taxonomy.
@@ -93,10 +93,12 @@ There are several options for importing data into RedBrick. For projects importi
 
 ### Adding a Storage Method
 
-RedBrick supports multiple cloud storage integrations.
+[See Instructions for Various Cloud Storage Integrations](https://docs.redbrickai.com/importing-data/import-cloud-data)
 
-> **To add a storage method:**
+> #### **To add a storage method:**
 > - Follow the steps in the RedBrick documentation.
+
+---
 
 ### Creating an Items List
 
@@ -107,27 +109,27 @@ The **Items List** is a `.json` file that contains:
 **Example Path**:  
 `container/folder/item.dcm`
 
-> **To create an Items List:**
-> 1. In the **Integrations** tab, click **…** for your storage method and select **Verify Storage Method**.
-> 2. Use a script to generate the `items.json` file for your data.
+[See Examples of Item Lists](https://docs.redbrickai.com/importing-data/import-cloud-data/creating-an-items-list)
 
-#### Importing Annotations
 To include annotations, specify:
 - A path to each segmentation file.
 - A segment map associating segments with taxonomy items.
 
 Segmentation files must be in **nifti** format.
 
-[See Examples of Item Lists](https://docs.redbrickai.com/importing-data/import-cloud-data/creating-an-items-list)
+[See Examples of Item Lists for Importing Segmentations](https://docs.redbrickai.com/python-sdk/importing-annotations-guide)
+
+> #### **To create an Items List:**
+> 1. In the **Integrations** tab, click **…** for your storage method and select **Verify Storage Method**.
+> 2. Use a script to generate the `items.json` file for your data.
+
+---
 
 ### Adding Data to a Project
 
-To import studies use the **RedBrick CLI**:
-1. Install CLI.
-2. Create a local project directory.
-3. Upload the `items.json` file.
+Use RedBrick’s command line interface (CLI) to import or export data from a project. Think of the CLI as a delivery service: after installing it, set up a "drop-off point" (a local directory) linked to your project. To upload or download data, navigate to this directory and run RedBrick commands—everything will be stored there.
 
-> **To Add Data Using the CLI**:
+> #### **To Set Up the CLI**:
 > 1. Create a virtual environment and install redbrick SDK/CLI.
 > ```bash
 > python -m venv venv &&
@@ -140,8 +142,19 @@ To import studies use the **RedBrick CLI**:
 > ```bash
 > redbrick config
 > ```
-> 6. Copy StorageID from the Storage Method in the **Integrations** tab.
-> 7. Upload items list. Use your own STORAGE ID.
+
+> #### **To Create a Local Project Directory**:
+> 1. Create a directory for your project.
+> ```bash
+> mkdir new-project &&
+> cd new-project
+> ```
+> 2. Type `redbrick clone` to pull up a list of existing projects. Select the project you would like to associate with your local directory.
+> 3. Type `redbrick info` to verify your current directory. 
+
+> #### **To Upload an Item List**: 
+> 1. Copy StorageID from the Storage Method in the **Integrations** tab.
+> 2. Upload items list. Use your own STORAGE ID.
 > ```bash
 > redbrick upload items.json --storage STORAGEID
 > ```
@@ -164,7 +177,7 @@ As studies move through the workflow:
 
 ---
 
-## Recommended Labeling Workflows
+## Appendix: Recommended Labeling Workflows
 
 Workflows tailored to team sizes and project types:
 - **Rapid Labeling**: Best for small teams or rapid prototyping.
