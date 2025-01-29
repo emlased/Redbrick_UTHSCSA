@@ -194,6 +194,7 @@ The team lead is responsible for assigning tasks. By default, tasks in the Label
 The following short video playlists are recommended viewing prior to beginning a labeling task. Labeling in redbrick involves organizing a 
 
 [See Overview of the Labeling Process (Video)](https://www.youtube.com/watch?v=cl7oTHeIhsc)
+
 [See Segmentation Toolkit Overview (Video)](https://www.youtube.com/watch?v=wsDFtPv64IM)
 
 > #### Segmentation Workflow for Labelers/Reviewers
