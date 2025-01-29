@@ -66,7 +66,7 @@ The following are examples of how attributes/classifications might be used in a 
 
 ## Creating a Project
 
-A RedBrick project workflow can be customized according to team needs. The [appendix](#appendix-recommended-labeling-workflows) of this document will include workflow recommendations for various project types. 
+A RedBrick project workflow can be customized according to team needs. The [appendix](#appendix) of this document will include workflow recommendations for various project types. 
 
 ### Workflow Stages
 - **Pre-Review**: Optional stage for evaluating data before labeling.
