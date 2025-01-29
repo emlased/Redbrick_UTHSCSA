@@ -11,6 +11,7 @@ This guide outlines the steps involved in setting up a new labeling project on t
 4. [Importing Data](#importing-data)
 5. [Segmentation Workflow](#segmentation-workflow)
 6. [Exporting Data](#exporting-data)
+7. [Appendix](#appendix)
 
 ---
 
@@ -166,18 +167,6 @@ Use RedBrick’s command line interface (CLI) to import or export data from a pr
 
 ---
 
-## Exporting Data
-
-Just like importing data, exporting segmentations in RedBrick uses the command line interface. RedBrick allows for exporting labels alone or labels with studies. It also allows for conversion of DICOM studies to Nifti upon export or export of studies from specific stages.
-
-[See RedBrick Export Commands](https://docs.redbrickai.com/python-sdk/cli-overview/exporting-annotations)
-
-> ### To export data:
-> 1. Navigate to local project directory.
-> 2. Run `redbrick export` to export all tasks.
-
----
-
 ## Segmentation Workflow
 
 ### Task Assignment
@@ -204,9 +193,21 @@ The following short video playlists are recommended viewing prior to beginning a
 
 ---
 
-Exporting Data
+## Exporting Data
 
-## Appendix: Recommended Labeling Workflows
+Just like importing data, exporting segmentations in RedBrick uses the command line interface. RedBrick allows for exporting labels alone or labels with studies. It also allows for conversion of DICOM studies to Nifti upon export or export of studies from specific stages.
+
+[See RedBrick Export Commands](https://docs.redbrickai.com/python-sdk/cli-overview/exporting-annotations)
+
+> ### To export data:
+> 1. Navigate to local project directory.
+> 2. Run `redbrick export` to export all tasks.
+ 
+---
+
+## Appendix
+
+###Recommended Labeling Workflows
 
 Workflows tailored to team sizes and project types:
 - **Rapid Labeling**: Best for small teams or rapid prototyping.
@@ -216,11 +217,11 @@ Workflows tailored to team sizes and project types:
 
 ![Flowchart](images/flowchart.png)
 
-### Rapid Labeling  
+#### Rapid Labeling  
 Designed for solo or small teams aiming to quickly label datasets. This method uses single labeling and optional internal or external review for quality assurance.  
 
 
-> #### To organize workflow:  
+> ##### To organize workflow:  
 > 1. Add team members.  
 > 2. Define the labeling taxonomy.  
 > 3. Create a project.  
@@ -228,10 +229,10 @@ Designed for solo or small teams aiming to quickly label datasets. This method u
 
 ---
 
-### Test Batch  
+#### Test Batch  
 Used to train large teams and establish gold-standard instructions. Labelers complete an initial set of 10 studies each, with consensus-based quality checks.  
 
-> #### To organize workflow:  
+> ##### To organize workflow:  
 > 1. Add team members and define the labeling taxonomy.  
 > 2. Create a project and enable multiple labeling with a manual single output.  
 > 3. Set the minimum number of labelers to 2.  
@@ -240,10 +241,10 @@ Used to train large teams and establish gold-standard instructions. Labelers com
 
 ---
 
-### Tiered Labeling  
+#### Tiered Labeling  
 Optimized for segmentation tasks, where each study undergoes multiple review stages to ensure accuracy.  
 
-> #### To organize workflow:  
+> ##### To organize workflow:  
 > 1. Use the predefined taxonomy to create a project.  
 > 2. Configure 2 review stages: internal (by experienced team members) and external (by a faculty reviewer).  
 > 3. Assign labelers to the labeling stage and reviewers to respective review stages.  
@@ -252,10 +253,10 @@ Optimized for segmentation tasks, where each study undergoes multiple review sta
 
 ---
 
-### Consensus Labeling  
+#### Consensus Labeling  
 Suitable for tasks like bounding boxes or landmarks, this approach uses multiple annotators to improve accuracy.  
 
-> #### To organize workflow:  
+> ##### To organize workflow:  
 > 1. Use the predefined taxonomy to create a project.  
 > 2. Select a consensus approach with multiple labels, single output, and manual review. Set a minimum of 2 labelers.  
 > 3. Add a review stage titled “external review.”  
@@ -265,6 +266,6 @@ Suitable for tasks like bounding boxes or landmarks, this approach uses multiple
 
 ---
 
-### Clinical Validation Testing  
+#### Clinical Validation Testing  
 For clinical validation, follow the gold-standard workflow, with model-generated labels included in the dataset. Labelers remain blinded to model labels. As labeling progresses, similarity scores compare model-generated and gold-standard labels to evaluate performance.  
 
