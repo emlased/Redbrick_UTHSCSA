@@ -16,6 +16,8 @@ This guide outlines the steps involved in setting up a new labeling project on t
 
 ## Team Roles and Responsibilities
 
+The first step in starting a project in RedBrick is defining team roles and adding members.
+
 The core team includes:
 - **Team Lead**: Serves as Internal Reviewer, but this member has Organizational Admin status to set up new projects.
 - **Internal Reviewers**: Serve as Project Admins, manage labeling stages, and conduct quality reviews.
@@ -41,18 +43,18 @@ Additional roles may include:
 
 ## Labeling Taxonomy
 
-Taxonomies define the labeling schema in RedBrick AI, ensuring consistency across projects. When setting up a taxonomy, you'll define:
-- **Types of Labels**: Examples include Segmentation or Bounding Boxes.
+Taxonomies define the labeling schema in RedBrick AI, ensuring consistency across projects. It is necessary to define a taxonomy prior to creating a  project. 
+- **Labels**: Examples include Segmentation or Bounding Boxes.
 - **Label Names**: Such as "Edema."
 - **Attributes**: Add extra details using checkboxes (True/False), dropdown options, multiple choices, or text fields.
 - **Classifications**: Attributes added to studies, series, or video frames to provide more information.
 - **Hints**: Instructions visible when hovering over labels.
 
-The following are examples of when you might add an attribute to a label.
-- brain mass segmentation > suspected intra-axial vs extra-axial location
-- liver segmentation > mass present vs absent
-- lung nodule segmentation > clear vs indeterminate margins
-- study classification > adequate vs poor quality
+The following are examples of how attributes/classifications might be used in a project.
+- Brain mass segmentation: Suspected intra-axial vs extra-axial location.
+- Liver segmentation: Mass present vs absent.
+- Lung nodule segmentation: Clear vs indeterminate margins.
+- Study classification: Adequate vs poor quality.
 
 > **To create a taxonomy:**
 > 1. Navigate to the **Taxonomies** tab.
@@ -63,9 +65,12 @@ The following are examples of when you might add an attribute to a label.
 
 ## Creating a Project
 
+A RedBrick project workflow can be customized according to team needs. The appendix of this document will include workflow recommendations for various project types. 
+
 ### Workflow Stages
 - **Pre-Review**: Optional stage for evaluating data before labeling.
   - The reviewer can remove studies of poor quality from the labeling pool.
+- **Pre-Label**: Optional stage that allows for studies to be given preliminary label prior to official labeling stage. 
 - **Single Labeling**: Studies are labeled once by each annotator.
 - **Multiple Labeling**: Studies receive several labels, and **Similarity Scores** identify discrepancies for review.
   - **Single Output Labeling**: Manual or automated data merge stage to select the best labels.
@@ -78,7 +83,7 @@ The following are examples of when you might add an attribute to a label.
 > 1. Press the **+** symbol next to the **Home** tab.
 > 2. Select **New Project**.
 > 3. Name the project and select the appropriate taxonomy.
-> 4. Add stages as needed. For basic projects, press **+ Add Review Stage**.
+> 4. Add stages as needed. For basic projects, press **+ Add Review Stage** to add a single review stage.
 
 ---
 
