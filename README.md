@@ -44,13 +44,13 @@ Additional roles may include:
 ## Labeling Taxonomy
 
 Taxonomies define the labeling schema in RedBrick AI, ensuring consistency across projects. It is necessary to define a taxonomy prior to creating a  project. 
-- **Labels**: Examples include Segmentation or Bounding Boxes.
-- **Label Names**: Such as "Edema."
+- **Label Types**: Examples include Segmentation or Bounding Boxes.
+- **Label Names**: The name of the object being labeled.
 - **Attributes**: Add extra details using checkboxes (True/False), dropdown options, multiple choices, or text fields.
 - **Classifications**: Attributes added to studies, series, or video frames to provide more information.
 - **Hints**: Instructions visible when hovering over labels.
 
-The following are examples of how attributes/classifications might be used in a project.
+The following are examples of how attributes/classifications might be used in a project. 
 - Brain mass segmentation: Suspected intra-axial vs extra-axial location.
 - Liver segmentation: Mass present vs absent.
 - Lung nodule segmentation: Clear vs indeterminate margins.
@@ -65,7 +65,7 @@ The following are examples of how attributes/classifications might be used in a 
 
 ## Creating a Project
 
-A RedBrick project workflow can be customized according to team needs. The appendix of this document will include workflow recommendations for various project types. 
+A RedBrick project workflow can be customized according to team needs. The [appendix](#appendix-recommended-labeling-workflows) of this document will include workflow recommendations for various project types. 
 
 ### Workflow Stages
 - **Pre-Review**: Optional stage for evaluating data before labeling.
@@ -95,8 +95,13 @@ There are several options for importing data into RedBrick. For projects importi
 
 [See Instructions for Various Cloud Storage Integrations](https://docs.redbrickai.com/importing-data/import-cloud-data)
 
-> #### **To add a storage method:**
-> - Follow the steps in the RedBrick documentation.
+> #### **To add Azure blob storage:**
+> 1. Navigate to your **Storage Account** on the Azure portal, select **Security + Networking** and **Access Keys**.
+> 2. Copy a connections string.
+> 3. Select the RedBrick Integrations tab and click **+ New storage method**.
+> 4. Select Azure blob storage type and enter connection string and storage account name.
+> 5. Navigate to **Storage Account** > **Settings** > **Resource Sharing (CORS)**. Use the following settings.
+![CORS Settings](images/CORS)
 
 ---
 
@@ -121,7 +126,7 @@ Segmentation files must be in **nifti** format.
 
 > #### **To create an Items List:**
 > 1. In the **Integrations** tab, click **…** for your storage method and select **Verify Storage Method**.
-> 2. Use a script to generate the `items.json` file for your data.
+> 2. Create a script to generate the `items.json` file for your data.
 
 ---
 
@@ -163,17 +168,26 @@ Use RedBrick’s command line interface (CLI) to import or export data from a pr
 
 ## Segmentation Workflow
 
-As studies move through the workflow:
-- **Team Lead**: Monitors progress and assigns tasks.
-- **Labelers and Reviewers**: Perform assigned labeling tasks.
-
 ### Task Assignment
-- **Automated Assignment**: Default for labeling tasks.
-- **Manual Assignment**: For review stages, assign studies to specific users.
+The team lead is responsible for assigning tasks. By default, tasks in the Labeling stage are auto-assigned to team members. Any members with organizational or project admin status can select any number of studies and reassign them or manually change their stage. Additionally, prior to beginning a labeling task, it is recommended that teams have well defined labeling criteria. The Test Batch method mentioned in the appendix is recommended for testing and refining labeling criteria to avoid labeler confusion.
+
+> #### Segmentation Workflow for Team Lead
+> 1. Ensure documented labeling criteria.
+> 2. Monitor labeling progress.
+> 3. As studies pass Labeling stage, assign Review tasks to designated team members.
+
+---
 
 ### Segmentation Toolkit
-- [Overview of the Labeling Process (Video)](https://www.youtube.com/watch?v=cl7oTHeIhsc)
-- [Segmentation Toolkit Overview (Video)](https://www.youtube.com/watch?v=wsDFtPv64IM)
+The following short video playlists are recommended viewing prior to beginning a labeling task. Labeling in redbrick involves organizing a 
+
+[See Overview of the Labeling Process (Video)](https://www.youtube.com/watch?v=cl7oTHeIhsc)
+[See Segmentation Toolkit Overview (Video)](https://www.youtube.com/watch?v=wsDFtPv64IM)
+
+> #### Segmentation Workflow for Labelers/Reviewers
+> 1. Review labeling criteria and segmentation toolkit videos.
+> 2. Complete assigned labeling tasks.
+> 3. For difficult or confusing labels, include comments.
 
 ---
 
@@ -185,8 +199,52 @@ Workflows tailored to team sizes and project types:
 - **Tiered Labeling**: Recommended for segmentation tasks, with multiple review stages.
 - **Consensus Labeling**: Effective for less time-intensive tasks (e.g., bounding boxes).
 
----
-
 ![Flowchart](images/flowchart.png)
 
----
+### Rapid Labeling  
+Designed for solo or small teams aiming to quickly label datasets. This method uses single labeling and optional internal or external review for quality assurance.  
+
+
+> #### To organize workflow:  
+> 1. Add team members.  
+> 2. Define the labeling taxonomy.  
+> 3. Create a project.  
+> 4. Set up a single-labeling workflow, adding internal/external reviews if needed.  
+
+### Test Batch  
+Used to train large teams and establish gold-standard instructions. Labelers complete an initial set of 10 studies each, with consensus-based quality checks.  
+
+
+> #### To organize workflow:  
+> 1. Add team members and define the labeling taxonomy.  
+> 2. Create a project and enable multiple labeling with a manual single output.  
+> 3. Set the minimum number of labelers to 2.  
+> 4. Assign a dataset of 5x the number of labelers (e.g., 10 studies per labeler).  
+> 5. After labeling, calculate similarity scores to identify inconsistencies and refine instructions.
+
+### Tiered Labeling  
+Optimized for segmentation tasks, where each study undergoes multiple review stages to ensure accuracy.  
+
+
+> #### To organize workflow:  
+> 1. Use the predefined taxonomy to create a project.  
+> 2. Configure 2 review stages: internal (by experienced team members) and external (by a faculty reviewer).  
+> 3. Assign labelers to the labeling stage and reviewers to respective review stages.  
+> 4. Labels pass through internal review for corrections or feedback, followed by external review for final approval.  
+> 5. Export finalized labels as ground truth.  
+
+### Consensus Labeling  
+Suitable for tasks like bounding boxes or landmarks, this approach uses multiple annotators to improve accuracy.  
+
+
+> #### To organize workflow:  
+> 1. Use the predefined taxonomy to create a project.  
+> 2. Select a consensus approach with multiple labels, single output, and manual review. Set a minimum of 2 labelers.  
+> 3. Add a review stage titled “external review.”  
+> 4. An experienced labeler conducts a manual review, selecting the best label and making necessary edits.  
+> 5. Use similarity scores to identify challenging cases.  
+> 6. Finalized labels undergo external review and are exported as ground truth.  
+
+### Clinical Validation Testing  
+For clinical validation, follow the gold-standard workflow, with model-generated labels included in the dataset. Labelers remain blinded to model labels. As labeling progresses, similarity scores compare model-generated and gold-standard labels to evaluate performance.  
+
