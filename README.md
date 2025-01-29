@@ -166,6 +166,18 @@ Use RedBrick’s command line interface (CLI) to import or export data from a pr
 
 ---
 
+## Exporting Data
+
+Just like importing data, exporting segmentations in RedBrick uses the command line interface. RedBrick allows for exporting labels alone or labels with studies. It also allows for conversion of DICOM studies to Nifti upon export or export of studies from specific stages.
+
+[See RedBrick Export Commands](https://docs.redbrickai.com/python-sdk/cli-overview/exporting-annotations)
+
+> ### To export data:
+> 1. Navigate to local project directory.
+> 2. Run `redbrick export` to export all tasks.
+
+---
+
 ## Segmentation Workflow
 
 ### Task Assignment
@@ -191,6 +203,8 @@ The following short video playlists are recommended viewing prior to beginning a
 
 ---
 
+Exporting Data
+
 ## Appendix: Recommended Labeling Workflows
 
 Workflows tailored to team sizes and project types:
@@ -211,9 +225,10 @@ Designed for solo or small teams aiming to quickly label datasets. This method u
 > 3. Create a project.  
 > 4. Set up a single-labeling workflow, adding internal/external reviews if needed.  
 
+---
+
 ### Test Batch  
 Used to train large teams and establish gold-standard instructions. Labelers complete an initial set of 10 studies each, with consensus-based quality checks.  
-
 
 > #### To organize workflow:  
 > 1. Add team members and define the labeling taxonomy.  
@@ -222,9 +237,10 @@ Used to train large teams and establish gold-standard instructions. Labelers com
 > 4. Assign a dataset of 5x the number of labelers (e.g., 10 studies per labeler).  
 > 5. After labeling, calculate similarity scores to identify inconsistencies and refine instructions.
 
+---
+
 ### Tiered Labeling  
 Optimized for segmentation tasks, where each study undergoes multiple review stages to ensure accuracy.  
-
 
 > #### To organize workflow:  
 > 1. Use the predefined taxonomy to create a project.  
@@ -233,9 +249,10 @@ Optimized for segmentation tasks, where each study undergoes multiple review sta
 > 4. Labels pass through internal review for corrections or feedback, followed by external review for final approval.  
 > 5. Export finalized labels as ground truth.  
 
+---
+
 ### Consensus Labeling  
 Suitable for tasks like bounding boxes or landmarks, this approach uses multiple annotators to improve accuracy.  
-
 
 > #### To organize workflow:  
 > 1. Use the predefined taxonomy to create a project.  
@@ -244,6 +261,8 @@ Suitable for tasks like bounding boxes or landmarks, this approach uses multiple
 > 4. An experienced labeler conducts a manual review, selecting the best label and making necessary edits.  
 > 5. Use similarity scores to identify challenging cases.  
 > 6. Finalized labels undergo external review and are exported as ground truth.  
+
+---
 
 ### Clinical Validation Testing  
 For clinical validation, follow the gold-standard workflow, with model-generated labels included in the dataset. Labelers remain blinded to model labels. As labeling progresses, similarity scores compare model-generated and gold-standard labels to evaluate performance.  
