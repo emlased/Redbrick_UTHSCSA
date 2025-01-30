@@ -207,7 +207,7 @@ Just like importing data, exporting segmentations in RedBrick uses the command l
 
 ## Appendix
 
-###Recommended Labeling Workflows
+### Recommended Labeling Workflows
 
 Workflows tailored to team sizes and project types:
 - **Rapid Labeling**: Best for small teams or rapid prototyping.
